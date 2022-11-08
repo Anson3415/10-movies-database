@@ -55,6 +55,16 @@
     top: 200px;
     z-index: 4;
   }  
+  .catch  {
+    opacity: 1 !important;
+    position: absolute;
+    top: 650px;
+    left: 50px;
+    text-align: center;
+    z-index: 4;
+    width: 300px;
+    max-width: 300px;
+  }
 
 .form-container {
   width: 33%;

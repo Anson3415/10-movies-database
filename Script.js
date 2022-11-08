@@ -3,6 +3,7 @@ let selectedMovie = "";
 let selectedid = "";
 
 function myFunction() {
+  let c = document.querySelector(".catch")
   let h1 = document.querySelector(".title");
   let p = document.querySelector(".info");
   let img = document.querySelector(".image");
@@ -10,28 +11,14 @@ function myFunction() {
   let selected = document.querySelector(".selector");
   let poster = document.querySelector(".poster-image");
   let selectedvalue = selected.value;
-  let selectedMovie = selected.options[selected.selectedIndex].innerHTML;
-  let response = axios.get("https://api.themoviedb.org/3/search/movie", {
+  let response = axios.get(`https://api.themoviedb.org/3/movie/${selectedvalue}`, {
     params: {
       api_key: apiKey,
-      include_adult: "false",
       append_to_response: "videos",
-      query: selectedMovie,
-    },
+    }
   });
-  response = response.then((moviesData) => {
-    console.log(moviesData);
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${moviesData.data.results[0].id}`,
-        {
-          params: {
-            api_key: apiKey,
-            append_to_response: "videos",
-          },
-        }
-      )
-      .then((movieData) => {
+  response = response.then((movieData) => {
+    console.log(movieData);
         const trailers = movieData.data.videos.results.filter(
           (trailer) => trailer.type === "Trailer"
         );
@@ -39,10 +26,26 @@ function myFunction() {
         iframe.src = `https://www.youtube.com/embed/${trailers.at(0).key}`;
         img.src = `https://image.tmdb.org/t/p/w500${movieData.data.backdrop_path}`;
         h1.innerHTML = `${movieData.data.title}`;
-        p.innerHTML = `Average Rating: ${movieData.data.vote_average}/10 <br><br>Release Date: ${movieData.data.release_date} <br><br> Popularity: ${movieData.data.popularity} <br><br> Original Language: ${movieData.data.original_language} <br><br> Vote Count: ${movieData.data.vote_count} <br><br>Synopsis: ${movieData.data.overview}`;
+        let x = movieData.data
+        let allGenres = ""
+        if (x.budget == "0") {
+          x.budget = "unknown"
+        }
+        for (i in x.genres) {
+          allGenres += x.genres[i].name + ", ";
+        }
+        c.innerHTML = `Catchphrase: <br> ${x.tagline}`
+        p.innerHTML = `
+        Average Rating: ${x.vote_average}/10 
+        <br>Release Date: ${x.release_date} 
+        <br>  Budget: $${x.budget}
+        <br> Revenue: $${x.revenue}
+        <br> Genres: ${allGenres} 
+        <br> Original Language: ${x.original_language} 
+        <br> Runtime: ${x.runtime} minutes
+        <br> Synopsis: ${x.overview}`;
       });
-  });
-}
+     } ;
 let element = document.querySelector(".get-button");
 
 element.addEventListener("click", myFunction);
