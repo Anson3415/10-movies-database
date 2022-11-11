@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>10 movies you must watch!</title>
-    <link rel="icon" href="D:\Movie Database-API project\wm_logo3s_2018.png">
+    <link rel="icon" href="D:\Movie Database-API project\wm_logo3s_2018.png" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,9 +11,7 @@
     <script src="Script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&family=Rubik&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Roboto+Condensed:wght@300;700&family=Rubik&display=swap");
+      @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Rubik&family=Sono&display=swap');
     </style>
   </head>
   <body>
@@ -35,14 +33,62 @@
         <input class="get-button" type="button" value="Get Movie" />
       </form>
     </div>
+    <h1 class="intro">
+      Start by choosing a movie and pressing the button to get information of
+      the movie
+    </h1>
+    <p class="introPara">Welcome to the top 10 movies of all times</p>
+    <img
+      class="arrow"
+      src="D:\Movie Database-API project\red-neon-arrow-4.png"
+    />
+    <img class="bkgdrop" src="D:\Movie Database-API project\280157.webp" />
     <div class="border"></div>
     <h1 class="title"></h1>
-    <p frameBorder="0" class="info"></p>
-    <p frameBorder="0" class="catch"></p>
-    <img src="" frameBorder="0" class="poster-image" />
+    <div class="infobox">
+    <h3>Average Rating:</h3>
+    <h5 id="ai"></h5>
+    <br>
+    <h3>Release Date:</h3>
+    <h5 id="bi"></h5>
+    <br>
+    <h3>Budget:</h3>
+    <h5 id="ci"></h5>
+    <br>
+    <h3>Revenue: </h3>
+    <h5 id="di"></h5>
+    <br>
+    <h3>Genres: </h3>
+    <h5 id="ei"></h5>
+    <br>
+    <h3>Original Language: </h3>
+    <h5 id="fi"></h5>
+    <br>
+    <h3>Runtime:</h3>
+    <h5 id="gi"></h5>
+    </div>
+  <div class= "synopsisBox">
+    <h3>Synopsis: </h3>
+    <h4 frameBorder="0" class="info"></h4>
+  </div>
+  <div class="catchBox">
+    <h3>Catchphrase: </h3>
+    <h4 frameBorder="0" class="catch"></h4>
+  </div>
+    <img
+      src=""
+      frameBorder="0"
+      class="poster-image"
+      onerror="this.style.display='none'"
+    />
     <div class="outer-containder"></div>
     <div class="container">
-      <img frameBorder="0" class="image" src="" />
+      <img
+        frameBorder="0"
+        class="image"
+        src=""
+        onerror="this.style.display='none'"
+      />
     </div>
     <iframe frameborder="0" class="video" src=""></iframe>
   </body>
